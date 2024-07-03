@@ -1,3 +1,5 @@
+require 'rspec'
+
 def greeting(name, surname, age)
    if age<18
       puts "Привет, #{name} #{surname}. Тебе меньше 18, можно начинать учиться программировать"
@@ -11,3 +13,10 @@ name = gets.chomp
 surname = gets.chomp
 age = gets.to_i
 greeting(name, surname, age)
+
+RSpec.describe "Main" do
+   it "#greetings" do
+      expect(greeting("Maks", "Si", 20)).to eq
+      ("Привет, Maks Si, Самое время работать.")
+   end
+end
