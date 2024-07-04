@@ -32,3 +32,10 @@ end
 num = numPok()
 pokemons = createPok(num)
 printPok(pokemons)
+
+RSpec.describe "Main" do
+    it "#createPok" do
+       expect(createPok(2)).to eq
+       (pokemons)
+    end
+ end

@@ -2,6 +2,8 @@
 # если оно заканчивается на "CS" - вывести цифру 2 в степени длины слова
 # иначе - вывести слово наоборот
 
+require "rspec"
+
 def wordScript(word)
     if word[-3, 2] == "CS"
         puts 2**(word.size-1)
@@ -14,3 +16,10 @@ puts 'Введите слово: '
 word = gets.to_s
 puts 'Результат: '
 wordScript(word)
+
+RSpec.describe "Main" do
+    it "#wordScript" do
+       expect(wordScript("hCS")).to eq
+       (8)
+    end
+ end
