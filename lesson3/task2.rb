@@ -10,24 +10,26 @@ BUFFER = 'buffer.txt'
 RESULT = 'result.txt'
 
 def updateRes(num)
-    file = File.open(BUFFER, 'w')
+    file = File.open(BUFFER, 'a')
     File.foreach(BD_FILE).with_index do |actor, index|
-        file.puts actor
-    end
-    File.foreach(BD_FILE).with_index do |actor, index|
-        file.puts name if BD_FILE.size-3 == index+1 &&
+        age = actor.split[2]
+        file.puts actor if num.to_i == age.to_i
     end
     file.close
-    File.write(RESULT, File.read(BUFFER))
-    File.delete(BUFFER) if File.exist?(BUFFER)
 end
 
+File.open(BUFFER, 'w')
 agePut=1
 ageMassiv = []
 puts 'Введите возраст для записи подходящих людей'
 agePut = gets.to_i
 ageMassiv.push(agePut)
+updateRes(agePut)
 while agePut!=-1
+    if BUFFER.size == BD_FILE.size
+        puts 'Добавлены все люди из файла'
+        break
+    end
     puts 'Введите возраст для записи подходящих людей'
     agePut = gets.to_i
     for i in ageMassiv
@@ -38,9 +40,9 @@ while agePut!=-1
             break
         end
     end
-    if count == 0
+    if count == 0 && agePut != -1
         ageMassiv.push(agePut)
         updateRes(agePut)
     end
+    File.write(RESULT, File.read(BUFFER))
 end
-puts ageMassiv
