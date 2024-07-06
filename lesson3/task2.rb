@@ -45,4 +45,12 @@ while agePut!=-1
         updateRes(agePut)
     end
     File.write(RESULT, File.read(BUFFER))
+    file1 = File.open("bd.txt")
+    file2 = File.open("result.txt")
+    if file1.size + 2 == file2.size
+        puts 'Добавлены все люди из исходного файла'
+        break
+    end
 end
+file = File.open(BUFFER, 'w')
+file.close
