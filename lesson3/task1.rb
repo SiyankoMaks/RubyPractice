@@ -65,24 +65,24 @@ def create(name)
     index
 end
 
-# index
-# puts 'Введите номер строки '
-# id = gets.to_i
-# find(id)
+index
+puts 'Введите номер строки '
+id = gets.to_i
+find(id)
 
 puts 'Введите слово для поиска совпадений '
 pattern = gets.to_s
 where(pattern)
 
-# puts 'Введите номер строки и слово для обновления '
-# id = gets.to_i
-# name = gets.to_s
-# update(id, name)
+puts 'Введите номер строки и слово для обновления '
+id = gets.to_i
+name = gets.to_s
+update(id, name)
 
-# puts 'Введите номер строки для удаления '
-# id = gets.to_i
-# delete(id)
+puts 'Введите номер строки для удаления '
+id = gets.to_i
+delete(id)
 
-# puts 'Введите слово для добавления в конец '
-# name = gets.to_s
-# create(name)
+puts 'Введите слово для добавления в конец '
+name = gets.to_s
+create(name)
