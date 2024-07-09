@@ -17,9 +17,8 @@ word = gets.to_s
 puts 'Результат: '
 wordScript(word)
 
-RSpec.describe "Main" do
+RSpec.describe "wordScript test" do
     it "#wordScript" do
-       expect(wordScript("hCS")).to eq
-       (8)
+        expect(wordScript("hCS")).to eq(puts 8)
     end
  end

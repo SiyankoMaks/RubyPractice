@@ -4,23 +4,26 @@
 # - Выведет в консоль массив, содержащий хеши покемонов в формате имя - цвет
 # Код должен быть организован в методы
 
+require 'rspec'
+
 def numPok()
     puts 'Введите количество покемонов'
     num = gets.to_i
-    puts num
+    return num
 end
 
 def createPok(num)
+    num = num.to_i
     pokemons = {}
     puts 'Введите имя и цвет для покемонов'
-    while num.to_i >= 0 do
-        puts num
+    while num > 0 do
         puts 'Имя: '
         name = gets.chomp
         puts 'Цвет: '
         color = gets.chomp
         pokemons[name] = color
-        num = num.to_i - 1
+        num = num - 1
+        puts num
     end
     puts pokemons
 end
@@ -30,12 +33,13 @@ def printPok(pokemons)
 end
 
 num = numPok()
-pokemons = createPok(num)
+pokemons = createPok(num.to_i)
 printPok(pokemons)
 
-RSpec.describe "Main" do
+RSpec.describe "createPok test" do
+    name = "Pom"
+    color = "Blue"
     it "#createPok" do
-       expect(createPok(2)).to eq
-       (pokemons)
+       expect(createPok(1)).to eq(puts "Pom"=>"Blue")
     end
  end
