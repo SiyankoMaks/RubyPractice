@@ -40,6 +40,6 @@ RSpec.describe "createPok test" do
     name = "Pom"
     color = "Blue"
     it "#createPok" do
-       expect(createPok(1)).to eq(puts "Pom"=>"Blue")
+       expect(createPok(1)).to eq(puts "#{name}"=>"#{color}")
     end
  end
