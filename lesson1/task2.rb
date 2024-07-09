@@ -13,7 +13,7 @@ num1 = gets.to_i
 num2 = gets.to_i
 puts foobar(num1, num2)
 
-RSpec.describe "Main" do
+RSpec.describe "foobar test" do
     it "#foobar" do
         expect(foobar(10, 15)).to eq(25)
     end

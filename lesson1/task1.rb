@@ -14,9 +14,9 @@ surname = gets.chomp
 age = gets.to_i
 greeting(name, surname, age)
 
-RSpec.describe "Main" do
-   it "#greetings" do
-      expect(greeting("Maks", "Si", 20)).to eq
-      ("Привет, Maks Si, Самое время работать.")
+#  Тесты
+RSpec.describe "greeting test" do
+   it "#greeting" do
+      expect(greeting("Maks", "Si", 20)).to eq(puts "Привет, Maks Si, Самое время работать.")
    end
 end
