@@ -6,6 +6,8 @@
 # delete(id) - удаляет строку
 # create(name) - добавляет строку в конец файла
 
+require 'rspec'
+
 TEST_FILE = 'test.txt'
 BUFFER = 'buffer.txt'
 
@@ -86,3 +88,26 @@ delete(id)
 puts 'Введите слово для добавления в конец '
 name = gets.to_s
 create(name)
+
+#Тесты
+RSpec.describe "Functions tests" do
+    it "#index" do
+        actor = "Sim"
+        expect(index()).to eq(puts actor)
+    end
+    it "#find" do
+        expect(find(1)).to eq(puts "Maks Si")
+    end
+    it "#where" do
+        expect(where("Gleb K")).to eq(puts "Gleb K")
+    end
+    it "#update" do
+        expect(update(1, "Maks")).to eq(puts "Maks\nGleb K\nVadim S\nGamlet U\nAndrey M")
+    end
+    it "#delete" do
+        expect(delete(2)).to eq(puts "Maks\nGleb K\nVadim S\nGamlet U\nAndrey M")
+    end
+    it "#create" do
+        expect(create("Sergey K")).to eq(puts "Maks\nGleb K\nVadim S\nGamlet U\nAndrey M\nSergey K")
+    end
+end
