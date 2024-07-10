@@ -6,7 +6,7 @@ server = TCPServer.open('0.0.0.0', 8080)
 while connection = server.accept
     request = connection.gets
 
-    method, full_path, protocol = request.split(" ")
+    method, full_path, protocol = request.split(' ')
 
     path, params = full_path.split("?")
 
@@ -14,8 +14,7 @@ while connection = server.accept
     response = case path
     when "/"
         balance = CashMachine.init
-        "#{balance}"
-        puts balance
+        "Input method:\nDeposit (d)\nWithdraw (w)\nBalance (b)\nQuit (q)\n\n"
     when "/Deposit"
         'Input deposit sum'
         cash = params.to_f
@@ -25,12 +24,12 @@ while connection = server.accept
         cash = params.to_f
         CashMachine.withdraw(cash)
     when "/Balance"
-        "Balance: #{balance}\n\n"
+        CashMachine.tekBalance
     else
-        "404"
+        "Incorrect method!"
     end
 
-    status = response == "404" ? "404" : "200"
+    status = response == "Incorrect method!" ? "404" : "200"
 
     connection.print "HTTP/1.1 #{status}\r\n"
     connection.print "Content-Type: text/html\r\n"

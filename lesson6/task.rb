@@ -20,6 +20,7 @@ class CashMachine
             file.puts const
             balance = const
         end
+        file.close
         @balance = balance
     end
 
@@ -27,12 +28,14 @@ class CashMachine
         cash = cash.to_f
         puts 'Введите сумму для начисления средств'
         if cash <= 0
-            puts "Введена некорректная сумма.\nСумма должна быть положительной!\n\n"
-            return @balance
+            return "Input incorrect sum.\nSum must be more 0!\n\n"
         end
         @balance = @balance + cash
         puts "Добавлена сумма #{cash}"
         puts "Текущий баланс #{@balance}\n\n"
+        file = File.open("balance.txt", "w")
+        file.puts @balance
+        file.close
         return @balance
     end
 
@@ -40,39 +43,18 @@ class CashMachine
         puts 'Введите сумму для снятия средств'
         cash = cash.to_f
         if cash <= 0 || cash > @balance
-            puts "Введена некорректная сумма.\nСумма должна быть положительной и не больше текущего баланса!\n\n"
-            return @balance
+            return "Input incorrect sum.\nSum must be more 0 and lower sum in cashmachine!\n\n"
         end
         @balance = @balance - cash
         puts "Списана сумма #{cash}"
         puts "Текущий баланс #{@balance}\n\n"
+        file = File.open("balance.txt", "w")
+        file.puts @balance
+        file.close
         return @balance
     end
 
     def self.tekBalance
-        "Текущий баланс #{@balance}\n\n"
+        "Balance #{@balance}\n\n"
     end
 end
-
-# CashMachine.init
-# input_user = "unknown"
-# while input_user.upcase != "Q"
-#     puts "Выберите необходимую функцию:\nDeposit (d)\nWithdraw (w)\nBalance (b)\nQuit (q)\n\n"
-#     input_user = gets.chomp
-#     input_user = input_user.upcase
-#     case input_user
-#     when "D"
-#         @balance = CashMachine.deposit
-#     when "W"
-#         @balance = CashMachine.withdraw
-#     when "B"
-#         CashMachine.tekBalance
-#     when "Q"
-#         puts 'Вы вышли из программы'
-#         file = File.open("balance.txt", "w")
-#         file.puts @balance
-#         break
-#     else
-#         puts "Введена неккоректная команда.\nМожно использовать только команды d, w, b и q"
-#     end
-# end
